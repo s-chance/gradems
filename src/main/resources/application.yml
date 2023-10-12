@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gradems
+    username: admin
+    password: gradems
+    driver-class-name: org.postgresql.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.entropy.gradems.po
+  configuration:
+    map-underscore-to-camel-case: true
+
