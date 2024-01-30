@@ -9,7 +9,6 @@ import com.entropy.gradems.po.Department;
 import com.entropy.gradems.po.Report;
 import com.entropy.gradems.po.Student;
 import com.entropy.gradems.service.StuService;
-import com.entropy.gradems.util.HttpStatus;
 import com.entropy.gradems.vo.ReportVO;
 import com.entropy.gradems.vo.StuInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-import static com.entropy.gradems.dto.CustomResponse.getIntegerCustomResponse;
 
 @RestController
 public class StuController {
@@ -50,19 +48,19 @@ public class StuController {
     @PostMapping("/insertDepart")
     CustomResponse<Integer> insertDepart(@RequestBody Department depart) {
         int result = stuService.insertDepart(depart.getDId(), depart.getDName());
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @DeleteMapping("/deleteDepart/{dId}")
     CustomResponse<Integer> deleteDepart(@PathVariable String dId) {
         int result = stuService.deleteDepart(dId);
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @PatchMapping("/updateDepart/{dId}")
     CustomResponse<Integer> updateDepart(@PathVariable String dId, @RequestBody Department depart) {
         int result = stuService.updateDepart(dId, depart.getDName());
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @GetMapping("/getAllStuDepart")
@@ -73,13 +71,13 @@ public class StuController {
     @PostMapping("/insertStu")
     CustomResponse<Integer> insertStu(@RequestBody Student student) {
         int result = stuService.insertStu(student);
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @DeleteMapping("/deleteStu/{sId}")
     CustomResponse<Integer> deleteStu(@PathVariable String sId) {
         int result = stuService.deleteStu(sId);
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @GetMapping("/getDId")
@@ -90,25 +88,25 @@ public class StuController {
     @PutMapping("/updateStu/{sId}")
     CustomResponse<Integer> updateStu(@PathVariable String sId, @RequestBody Student student) {
         int result = stuService.updateStu(student);
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @PostMapping("/insertCourse")
     CustomResponse<Integer> insertCourse(@RequestBody Course course) {
         int result = stuService.insertCourse(course);
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @DeleteMapping("/deleteCourse/{cId}")
     CustomResponse<Integer> deleteCourse(@PathVariable String cId) {
         int result = stuService.deleteCourse(cId);
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @PutMapping("/updateCourse/{cId}")
     CustomResponse<Integer> updateCourse(@PathVariable String cId, @RequestBody Course course) {
         int result = stuService.updateCourse(course);
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @GetMapping("/getAllReport")
@@ -119,19 +117,19 @@ public class StuController {
     @PostMapping("/insertReport")
     CustomResponse<Integer> insertReport(@RequestBody Report report) {
         int result = stuService.insertReport(report);
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @DeleteMapping("/deleteReport/{sId}/{cId}")
     CustomResponse<Integer> deleteReport(@PathVariable String sId, @PathVariable String cId) {
         int result = stuService.deleteReport(sId, cId);
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @PutMapping("/updateReport/{sId}/{cId}")
     CustomResponse<Integer> updateReport(@PathVariable String sId, @PathVariable String cId, @RequestBody Report report) {
         int result = stuService.updateReport(report);
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
     @GetMapping("/getReportBySId/{sId}")
@@ -147,7 +145,7 @@ public class StuController {
     @DeleteMapping("/deleteReportBySId/{sId}")
     CustomResponse<Integer> deleteReportBySId(@PathVariable String sId) {
         int result = stuService.deleteReportBySId(sId);
-        return getIntegerCustomResponse(result);
+        return CustomResponse.getIntegerCustomResponse(result);
     }
 
 
