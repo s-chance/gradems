@@ -1,0 +1,22 @@
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+> {% client.global.set("auth_token", response.headers.valueOf("Authorization").substring(7)); %}
+
+###
+GET http://localhost:8080/getAllCourses
+Authorization: Bearer {{auth_token}}
+
+###
+GET http://localhost:8080/getAllDeparts
+Authorization: Bearer {{auth_token}}
+
+###
+GET http://localhost:8080/getAllStu
+Authorization: Bearer {{auth_token}}

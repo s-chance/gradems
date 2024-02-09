@@ -1,0 +1,23 @@
+###
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "user",
+  "roles": ["user"]
+}
+
+> {% client.global.set("auth_token", response.headers.valueOf("Authorization").substring(7)); %}
+
+###
+GET http://localhost:8080/getAllCourses
+Authorization: Bearer {{auth_token}}
+
+### can't access
+GET http://localhost:8080/getAllDeparts
+Authorization: Bearer {{auth_token}}
+
+###
+GET http://localhost:8080/getAllStu
+Authorization: Bearer {{auth_token}}
