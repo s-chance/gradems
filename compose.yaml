@@ -1,5 +1,7 @@
+version: '3.8'
 services:
   postgres:
+    container_name: gradms-postgres
     image: 'postgres:latest'
     restart: always
     environment:
@@ -10,6 +12,21 @@ services:
       - '5432:5432'
     volumes:
       - 'postgres_data:/var/lib/postgresql/data'
+  redis:
+    container_name: gradms-redis
+    image: 'redis:latest'
+    restart: always
+    ports:
+      - '6379:6379'
+  mongodb:
+    container_name: gradms-mongodb
+    image: 'mongo:latest'
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongodb_data:/data/db'
 
 volumes:
   postgres_data:
+  mongodb_data:
