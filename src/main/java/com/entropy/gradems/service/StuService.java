@@ -3,58 +3,66 @@ package com.entropy.gradems.service;
 import com.entropy.gradems.dto.ReportDTO;
 import com.entropy.gradems.dto.StuCouDTO;
 import com.entropy.gradems.dto.StuDepartDTO;
+import com.entropy.gradems.dto.UserRoleDTO;
 import com.entropy.gradems.po.Course;
 import com.entropy.gradems.po.Department;
 import com.entropy.gradems.po.Report;
 import com.entropy.gradems.po.Student;
 import com.entropy.gradems.vo.ReportVO;
 import com.entropy.gradems.vo.StuInfoVO;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface StuService {
-    List<Department> getAllDeparts();
 
-    List<Student> getAllStu();
+    Mono<String> login(String username, String rawPassword);
 
-    List<Course> getAllCourses();
+    Mono<String> register(UserRoleDTO userRoleDTO, String rawPassword);
 
-    List<StuCouDTO> getAllStuCou();
+    Flux<Department> getAllDeparts();
 
-    int insertDepart(String dId, String dName);
+    Flux<Student> getAllStu();
 
-    int deleteDepart(String dId);
+    Flux<Course> getAllCourses();
 
-    int updateDepart(String dId, String dName);
+    Flux<StuCouDTO> getAllStuCou();
 
-    List<StuDepartDTO> getAllStuDepart();
+    Mono<Long> insertDepart(String dId, String dName);
 
-    int insertStu(Student student);
+    Mono<Long> deleteDepart(String dId);
 
-    int deleteStu(String sId);
+    Mono<Long> updateDepart(String dId, String dName);
 
-    String getDId(String dName);
+    Flux<StuDepartDTO> getAllStuDepart();
 
-    int updateStu(Student student);
+    Mono<Long> insertStu(Student student);
 
-    int insertCourse(Course course);
+    Mono<Long> deleteStu(String sId);
 
-    int deleteCourse(String cId);
+    Mono<String> getDId(String dName);
 
-    int updateCourse(Course course);
+    Mono<Long> updateStu(Student student);
 
-    List<ReportDTO> getAllReport();
+    Mono<Long> insertCourse(Course course);
 
-    int insertReport(Report report);
+    Mono<Long> deleteCourse(String cId);
 
-    int deleteReport(String sId, String cId);
+    Mono<Long> updateCourse(Course course);
 
-    int updateReport(Report report);
+    Flux<ReportDTO> getAllReport();
 
-    List<ReportVO> getReportBySId(String sId);
+    Mono<Long> insertReport(Report report);
 
-    List<StuInfoVO> getAllStuInfo();
+    Mono<Long> deleteReport(String sId, String cId);
 
-    int deleteReportBySId(String sId);
+    Mono<Long> updateReport(Report report);
+
+    Flux<ReportVO> getReportBySId(String sId);
+
+    Flux<StuInfoVO> getAllStuInfo();
+
+    Mono<Long> deleteReportBySId(String sId);
+
+//    Mono<Void> deleteGraduate(Date date, Integer sHour);
 
 }
